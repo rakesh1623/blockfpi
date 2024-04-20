@@ -1922,8 +1922,8 @@
       "transactionHash": "0x04d906144dd9ae9ea564286e80010fa9a38a94476277d27240f506052c7f46f6"
     }
   },
-  "schemaVersion": "3.4.11",
-  "updatedAt": "2024-04-01T16:32:16.858Z",
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-04-19T10:48:00.122Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

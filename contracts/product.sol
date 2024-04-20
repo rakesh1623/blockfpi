@@ -30,6 +30,7 @@ contract product {
     mapping(bytes32=>bytes32) public productsManufactured;
     mapping(bytes32=>bytes32) public productsForSale;
     mapping(bytes32=>bytes32) public productsSold;
+    // mapping(string => string) public productsSold;
     mapping(bytes32=>bytes32[]) public productsWithSeller;
     mapping(bytes32=>bytes32[]) public productsWithConsumer;
     mapping(bytes32=>bytes32[]) public sellersWithManufacturer;
@@ -203,11 +204,11 @@ contract product {
     //Verify
 
     function verifyProduct(bytes32 _productSN, bytes32 _consumerCode) public view returns(bool){
-        if(productsSold[_productSN] == _consumerCode){
-            return true;
+        if(productsSold[_productSN] != _consumerCode){
+            return false;
         }
         else{
-            return false;
+            return true;
         }
     }
 }
