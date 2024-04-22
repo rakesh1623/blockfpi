@@ -39,15 +39,12 @@ App = {
         var productSN = document.getElementById('productSN').value;
         var consumerCode = document.getElementById('consumerCode').value;
         var productInstance;
-        //window.ethereum.enable();
         web3.eth.getAccounts(function(error,accounts){
 
             if(error) {
                 console.log(error);
             }
-
             var account=accounts[0];
-            // console.log(account);
             App.contracts.product.deployed().then(function(instance){
 
                 productInstance=instance;

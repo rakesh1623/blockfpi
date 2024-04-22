@@ -37,18 +37,13 @@ App = {
     getData:function(event) {
         event.preventDefault();
         var consumerCode = document.getElementById('consumerCode').value;
-
         var productInstance;
-        //window.ethereum.enable();
         web3.eth.getAccounts(function(error,accounts){
 
             if(error) {
                 console.log(error);
             }
-
             var account=accounts[0];
-            // console.log(account);
-
             App.contracts.product.deployed().then(function(instance){
 
                 productInstance=instance;
@@ -59,22 +54,19 @@ App = {
                 var productSNs=[];
                 var sellerCodes=[];
                 var manufacturerCodes=[];
-                // console.log(result);
-                
+
                 for(var k=0;k<result[0].length;k++){
                     productSNs[k]=web3.toAscii(result[0][k]);
                 }
 
                 for(var k=0;k<result[1].length;k++){
                     sellerCodes[k]=web3.toAscii(result[1][k]);
-
                 }
 
                 for(var k=0;k<result[2].length;k++){
                     manufacturerCodes[k]=web3.toAscii(result[2][k]);
                 }
-                
-
+            
                 var t= "";
                 document.getElementById('logdata').innerHTML = t;
                 for(var i=0;i<result[0].length;i++) {

@@ -55,9 +55,6 @@
     <section>
         <div class="container">
             <h2>Add Product</h2>
-
-
-
 			<div class="matrix">
 				<table width="100%">
 					<tr width="100%">
@@ -112,7 +109,6 @@
           </div>
     </section>
 
-<!-- <br></br>	 -->
 	<div class="qr-code">
 		<div align="center">
 			<img align="center" hidden id="imgQR" src="" alt="qr-code" >
@@ -137,14 +133,25 @@
 	<script>
 	var src;
 	var qrValue;
+	var qrProductSN;
+	var qrManufacturerID;
+	var qrProductName;
+	var qrProductBrand;
+	var qrProductPrice;
+
 	function fetchQR(){
-		// qrValue = document.getElementById('productSN').value;
-		qrValue = document.getElementById('productSN').value;
+
+		qrProductSN = document.getElementById('productSN').value;
+		qrManufacturerID = document.getElementById('manufacturerID').value;
+		qrProductName = document.getElementById('productName').value;
+		qrProductBrand = document.getElementById('productBrand').value;
+		qrProductPrice = document.getElementById('productPrice').value;
 		
 		qrImage = document.querySelector(".qr-code");
 		qrImageResult = qrImage.querySelector("img");
-		src = qrImageResult.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrValue}`;
-		
+
+
+		src = qrImageResult.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrProductSN} & data2=${qrManufacturerID} & data3 = ${qrProductName}  & data4 = ${productBrand} & data5 = ${qrProductPrice}}`;
 
 		downloadQrImg = document.getElementById('imgQR');
 		downloadQrBtn = document.getElementById('download');
@@ -154,7 +161,7 @@
 	}
 
 	function saveImage(){
-		saveAs(src,qrValue);
+		saveAs(src,qrProductSN);
 		downloadQrImg.setAttribute('hidden', 'hidden');
 		downloadQrBtn.setAttribute('hidden', 'hidden');
 	}

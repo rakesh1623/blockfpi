@@ -52,16 +52,13 @@ App = {
             if(error) {
                 console.log(error);
             }
-
             console.log(accounts);
             var account=accounts[0];
-            // console.log(account);
 
             App.contracts.product.deployed().then(function(instance){
                 productInstance=instance;
                 return productInstance.addProduct(web3.fromAscii(manufacturerID),web3.fromAscii(productName), web3.fromAscii(productSN), web3.fromAscii(productBrand), productPrice, {from:account});
              }).then(function(result){
-                // console.log(result);
 
                 document.getElementById('manufacturerID').value='';
                 document.getElementById('productName').value='';

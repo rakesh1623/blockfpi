@@ -43,7 +43,6 @@ App = {
         var productSN = document.getElementById('productSN').value;
         var consumerCode = document.getElementById('consumerCode').value;
  
-        //window.ethereum.enable();
         web3.eth.getAccounts(function(error,accounts){
 
             if(error) {
@@ -52,13 +51,11 @@ App = {
 
             console.log(accounts);
             var account=accounts[0];
-            // console.log(account);
 
             App.contracts.product.deployed().then(function(instance){
                 productInstance=instance;
                 return productInstance.sellerSellProduct(web3.fromAscii(productSN),web3.fromAscii(consumerCode), {from:account});
              }).then(function(result){
-                // console.log(result);
                 window.location.reload();
                 document.getElementById('sellerName').innerHTML='';
                 document.getElementById('sellerBrand').innerHTML='';
